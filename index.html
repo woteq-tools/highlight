@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syntax Highlighter — Highlight Code Online Free | Woteq Tools</title>
+<meta name="description" content="Free online syntax highlighter. Paste your source code, pick a language and theme, then copy the highlighted preview, ready-to-paste HTML or a Markdown block. Runs entirely in your browser.">
+<meta name="keywords" content="syntax highlighter, code highlighter, highlight code, html code generator, markdown code block, highlight.js">
+<meta name="theme-color" content="#4f46e5">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Syntax Highlighter — Woteq Tools">
+<meta property="og:description" content="Highlight your source code in 190+ languages and 12 themes. Copy the result as HTML or Markdown. 100% in your browser.">
+<meta property="og:url" content="https://woteq-tools.github.io/highlight/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" id="themeStylesheet" href="assets/vendor/styles/default.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#tool">Skip to the highlighter</a>
+
+<header class="site-header">
+	<div class="wrap header-inner">
+		<a class="brand" href="./">
+			<span class="brand-mark" aria-hidden="true">
+				<svg viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+					<path d="M6 5v9a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V5"/>
+					<path d="M6 5l10 8L26 5"/>
+					<path d="M6 5H3m23 0h3"/>
+					<path d="M16 13v14"/>
+				</svg>
+			</span>
+			<span class="brand-text">Woteq<span class="brand-dot">.</span>Tools</span>
+		</a>
+
+		<nav class="header-nav" aria-label="Primary">
+			<a href="https://woteq-tools.github.io/">All tools</a>
+			<a class="btn btn-sm btn-ghost" href="https://github.com/woteq-tools/highlight" target="_blank" rel="noopener">
+				<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64.1 1.3-.21 1.3-.21"/></svg>
+				GitHub
+			</a>
+		</nav>
+	</div>
+</header>
+
+<main class="wrap">
+
+	<section class="hero">
+		<h1>Syntax Highlighter</h1>
+		<p class="lede">
+			Paste your source code, choose a language and a theme, and get a highlighted
+			preview you can copy straight into a blog post, a README or a chat message.
+			Everything runs in your browser — <strong>nothing is uploaded</strong>.
+		</p>
+	</section>
+
+	<section class="panel" id="tool" aria-labelledby="tool-heading">
+		<h2 id="tool-heading" class="sr-only">Highlighter</h2>
+
+		<!-- ── Controls ───────────────────────────────────────────── -->
+		<div class="controls">
+
+			<div class="field">
+				<label class="field-label" for="langToggle">Language</label>
+				<div class="combo" id="langCombo">
+					<button type="button" class="combo-toggle" id="langToggle"
+					        aria-haspopup="listbox" aria-expanded="false" aria-controls="langMenu">
+						<span class="combo-value" id="langValue">JavaScript</span>
+						<svg class="combo-chevron" viewBox="0 0 20 20" width="16" height="16" fill="none"
+						     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<path d="m5 8 5 5 5-5"/>
+						</svg>
+					</button>
+
+					<div class="combo-menu" id="langMenu" hidden>
+						<input type="text" class="combo-search" id="langSearch" autocomplete="off"
+						       spellcheck="false" placeholder="Search languages…"
+						       aria-label="Search languages" aria-controls="langList">
+						<ul class="combo-list" id="langList" role="listbox" aria-label="Languages" tabindex="-1"></ul>
+						<p class="combo-empty" id="langEmpty" hidden>No language matches that search.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="field">
+				<label class="field-label" for="theme">Theme</label>
+				<select id="theme">
+					<option value="default">Default</option>
+					<option value="a11y-dark">a11y Dark</option>
+					<option value="a11y-light">a11y Light</option>
+					<option value="agate">Agate</option>
+					<option value="github">GitHub</option>
+					<option value="github-dark">GitHub Dark</option>
+					<option value="googlecode">Google Code</option>
+					<option value="hybrid">Hybrid</option>
+					<option value="idea">Idea</option>
+					<option value="nord">Nord</option>
+					<option value="vs">Visual Studio Code</option>
+					<option value="xcode">Xcode</option>
+				</select>
+			</div>
+
+			<div class="field field-switch">
+				<span class="field-label" id="numbers-label">Options</span>
+				<label class="switch">
+					<input type="checkbox" id="numbers">
+					<span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+					<span class="switch-text">Line numbers</span>
+				</label>
+			</div>
+		</div>
+
+		<!-- ── Source ─────────────────────────────────────────────── -->
+		<div class="editor-block">
+			<div class="block-head">
+				<h3 class="block-title">Source code</h3>
+				<div class="block-actions">
+					<button type="button" class="btn btn-sm btn-ghost" id="sampleBtn">Load sample</button>
+					<button type="button" class="btn btn-sm btn-ghost" id="clearBtn">Clear</button>
+				</div>
+			</div>
+			<label class="sr-only" for="codeInput">Your source code</label>
+			<textarea id="codeInput" class="code-area" spellcheck="false" autocomplete="off"
+			          autocapitalize="off" wrap="off"
+			          placeholder="Paste or type your code here…"></textarea>
+			<p class="hint">The preview updates as you type. Your code never leaves this page.</p>
+		</div>
+
+		<!-- ── Output ─────────────────────────────────────────────── -->
+		<div class="output-block">
+			<div class="block-head">
+				<div class="tabs" role="tablist" aria-label="Output format">
+					<button type="button" class="tab is-active" id="tab-preview" role="tab"
+					        aria-selected="true" aria-controls="panel-preview">Highlighted</button>
+					<button type="button" class="tab" id="tab-html" role="tab"
+					        aria-selected="false" aria-controls="panel-html">HTML</button>
+					<button type="button" class="tab" id="tab-markdown" role="tab"
+					        aria-selected="false" aria-controls="panel-markdown">Markdown</button>
+				</div>
+
+				<div class="block-actions">
+					<button type="button" class="btn btn-sm btn-ghost copy-btn" id="copyPreviewBtn"
+					        data-copy="preview">Copy code</button>
+					<button type="button" class="btn btn-sm btn-primary copy-btn" id="copyFormatBtn"
+					        data-copy="format">Copy HTML</button>
+				</div>
+			</div>
+
+			<div class="tab-panel" id="panel-preview" role="tabpanel" aria-labelledby="tab-preview">
+				<div class="preview hljs" id="preview">
+					<pre><code id="codeOutput" class="language-javascript"></code></pre>
+				</div>
+			</div>
+
+			<div class="tab-panel" id="panel-html" role="tabpanel" aria-labelledby="tab-html" hidden>
+				<label class="sr-only" for="htmlOutput">Highlighted HTML</label>
+				<textarea id="htmlOutput" class="code-area" readonly spellcheck="false" wrap="off"></textarea>
+				<p class="hint">Paste this straight into a blog post or an HTML file — the colours travel with the code.</p>
+			</div>
+
+			<div class="tab-panel" id="panel-markdown" role="tabpanel" aria-labelledby="tab-markdown" hidden>
+				<label class="sr-only" for="mdOutput">Markdown code block</label>
+				<textarea id="mdOutput" class="code-area" readonly spellcheck="false" wrap="off"></textarea>
+				<p class="hint">A fenced code block — most Markdown renderers highlight the language for you.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ── Info ───────────────────────────────────────────────────── -->
+	<section class="panel info-panel">
+		<h2>How it works</h2>
+		<ol class="steps">
+			<li>Pick a language — 190+ grammars are bundled, so it works offline too.</li>
+			<li>Type or paste your code; the highlighted preview refreshes on every keystroke.</li>
+			<li>Choose a theme, switch line numbers on, then copy the result as
+				<strong>plain code</strong>, <strong>HTML</strong> or <strong>Markdown</strong>.</li>
+		</ol>
+		<p class="hint">
+			The page reads <code>?language=</code>, <code>?theme=</code> and <code>?numbers=1</code>
+			from the URL and keeps them in sync as you change things — bookmark a combination you like.
+		</p>
+	</section>
+
+	<section class="panel faq-panel">
+		<h2>Frequently asked questions</h2>
+
+		<h3>Is my code uploaded anywhere?</h3>
+		<p>
+			No. Highlighting happens in your browser with
+			<a href="https://highlightjs.org/" target="_blank" rel="noopener noreferrer">Highlight.js</a>,
+			and the tool makes no network requests at all — the library, the grammars and the
+			themes are all bundled with the page.
+		</p>
+
+		<h3>Which HTML should I paste into my blog?</h3>
+		<p>
+			Use the <strong>HTML</strong> tab. It produces a <code>&lt;pre&gt;</code> block where every
+			token carries its own inline colour, so it looks the same no matter what theme (or no
+			theme) the surrounding site applies. The <strong>Highlighted</strong> tab is a live preview
+			only, and the <strong>Markdown</strong> tab emits a fenced block for Markdown-based sites.
+		</p>
+
+		<h3>Why does a language not appear in the list?</h3>
+		<p>
+			The catalogue comes straight from Highlight.js, so it covers every grammar that project
+			ships. A couple of very new or exotic grammars may be missing from a given release —
+			check the Highlight.js language list for the full, up-to-date set.
+		</p>
+
+		<h3>Can I use this offline?</h3>
+		<p>
+			Yes. Once the page has loaded, everything it needs is already on your machine. You can
+			even install it as an app from your browser's menu.
+		</p>
+	</section>
+
+</main>
+
+<footer class="site-footer">
+	<div class="wrap">
+		<p>
+			Part of <a href="https://woteq-tools.github.io/">Woteq Tools</a> ·
+			Source on <a href="https://github.com/woteq-tools/highlight" target="_blank" rel="noopener">GitHub</a> ·
+			Built with <a href="https://highlightjs.org/" target="_blank" rel="noopener">Highlight.js</a>
+		</p>
+	</div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/vendor/highlight.min.js"></script>
+<script src="assets/js/languages.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
